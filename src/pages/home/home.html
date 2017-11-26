@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Client App
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding no-bounce overflow-scroll="false">
+
+  <h5>Get Player Records</h5>
+  <button ion-button (click)="getData()" block >Get the data...</button>
+  <br />
+  <ion-list *ngFor="let item of getVariable">
+   <!--{{getVariable["0"]?.player}} : {{getVariable["0"]?.main}} , {{getVariable["0"]?.rank}}-->
+     {{item.player}}: {{item.main}}, {{item.rank}}
+ </ion-list>
+  <br />
+  <br />
+
+  <h5>Add Player Record</h5>
+	<ion-item>
+	<ion-label for="postDataPlayer" floating>Player</ion-label>
+	<ion-input name="postDataPlayer" type="text" [(ngModel)]="doubleBindedVariable.player"></ion-input>
+	</ion-item>
+  <ion-item>
+	<ion-label for="postDataMain" floating>Main</ion-label>
+	<ion-input name="postDataMain" type="text" [(ngModel)]="doubleBindedVariable.main"></ion-input>
+	</ion-item>
+  <ion-item>
+	<ion-label for="postDataRank" floating>Rank</ion-label>
+	<ion-input name="postDataRank" type="text" [(ngModel)]="doubleBindedVariable.rank"></ion-input>
+	</ion-item>
+  <br />
+	<button ion-button (click)="postData(doubleBindedVariable)" block >POST THE DATA...</button>
+
+</ion-content>
