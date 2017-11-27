@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 
 import { Http, Headers/**, Response/**/} from '@angular/http';
 import 'rxjs/add/operator/map';
-//import { Observable } from "rxjs/Observable";
 
 /*
   Generated class for the ApiProvider provider.
@@ -16,18 +15,45 @@ export class ApiProvider {
 
   url: string = "https://fo-server--express.herokuapp.com/";
 
-
   constructor(public http: Http/*,
   public httpclient: HttpClient/**/) {
   }
 
   getRequest(){
+    return this.http.get(this.url + 'getData', this.setHeaders())
+      .map(res => res.json());
+  }
+
+  async postRequest(body){
+    await this.http.post(this.url + 'postData' , body, this.setHeaders())
+      .map(res => res.json())
+      .subscribe(data => {
+        //console.log(data);
+      });
+  }
+
+  async putRequest(body){
+    await this.http.put(this.url + 'putData' , body, this.setHeaders())
+      .map(res => res.json())
+      .subscribe(data => {
+        //console.log(data);
+      });
+  }
+
+  async deleteRequest(body){
+    await this.http.post(this.url + 'deleteData' , body, this.setHeaders())
+      .map(res => res.json())
+      .subscribe(data => {
+        console.log(data);
+      });
+  }
+
+  setHeaders(){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
 
-    return this.http.get(this.url + 'getData', {headers: headers})
-      .map(res => res.json());
+    return {headers: headers};
   }
 
 }

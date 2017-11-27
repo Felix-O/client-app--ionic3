@@ -18,7 +18,7 @@
   <br />
   <br />
 
-  <h5>Add Player Record</h5>
+  <!--h5>Add Player Record</h5>
 	<ion-item>
 	<ion-label for="postDataPlayer" floating>Player</ion-label>
 	<ion-input name="postDataPlayer" type="text" [(ngModel)]="doubleBindedVariable.player"></ion-input>
@@ -33,5 +33,37 @@
 	</ion-item>
   <br />
 	<button ion-button (click)="postData(doubleBindedVariable)" block >POST THE DATA...</button>
+  <br />
+  <br /-->
+
+  <h5>Edit Player Record</h5>
+  <ion-item>
+  <ion-label for="putDataId" floating>Id</ion-label>
+  <ion-input name="puttDataId" type="text" [(ngModel)]="doubleBindedVariable.id"></ion-input>
+  </ion-item>
+  <ion-item>
+  <ion-label for="putDataPlayer" floating>Player</ion-label>
+  <ion-input name="putDataPlayer" type="text" [(ngModel)]="doubleBindedVariable.player"></ion-input>
+  </ion-item>
+  <ion-item>
+  <ion-label for="putDataMain" floating>Main</ion-label>
+  <ion-input name="putDataMain" type="text" [(ngModel)]="doubleBindedVariable.main"></ion-input>
+  </ion-item>
+  <ion-item>
+  <ion-label for="putDataRank" floating>Rank</ion-label>
+  <ion-input name="putDataRank" type="text" [(ngModel)]="doubleBindedVariable.rank"></ion-input>
+  </ion-item>
+  <br />
+  <button ion-button (click)="putData(doubleBindedVariable)" block >PUT THE DATA...</button>
+  <br />
+  <br />
+
+  <h5>Delete Player Record</h5>
+  <ion-item>
+  <ion-label for="deleteData" floating>Id</ion-label>
+  <ion-input name="deleteData" type="text" [(ngModel)]="doubleBindedVariable.id"></ion-input>
+  </ion-item>
+  <br />
+  <button ion-button (click)="deleteData(doubleBindedVariable)" block >DELETE THE DATA...</button>
 
 </ion-content>
