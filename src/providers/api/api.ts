@@ -24,7 +24,7 @@ export class ApiProvider {
       .map(res => res.json());
   }
 
-  async postRequest(body){
+  async postRequest(body: string){
     await this.http.post(this.url + 'postData' , body, this.setHeaders())
       .map(res => res.json())
       .subscribe(data => {
@@ -32,7 +32,7 @@ export class ApiProvider {
       });
   }
 
-  async putRequest(body){
+  async putRequest(body: string){
     await this.http.put(this.url + 'putData' , body, this.setHeaders())
       .map(res => res.json())
       .subscribe(data => {
@@ -40,7 +40,7 @@ export class ApiProvider {
       });
   }
 
-  async deleteRequest(body){
+  async deleteRequest(body: string){
     await this.http.post(this.url + 'deleteData' , body, this.setHeaders())
       .map(res => res.json())
       .subscribe(data => {
