@@ -11,16 +11,13 @@
   <h5>Get Player Records</h5>
   <button ion-button (click)="getData()" block >Get the data...</button>
   <br />
-  <ion-item>
   <ion-list *ngFor="let item of getVariable">
    <!--{{getVariable["0"]?.player}} : {{getVariable["0"]?.main}} , {{getVariable["0"]?.rank}}-->
      {{item.player}}: {{item.main}}, {{item.rank}}
  </ion-list>
- </ion-item>
+  <br />
   <br />
   <hr>
-  <br />
-
   <!--h5>Add Player Record</h5>
 	<ion-item>
 	<ion-label for="postDataPlayer" floating>Player</ion-label>
@@ -59,8 +56,8 @@
   <br />
   <button ion-button (click)="putData(doubleBindedVariable)" block >PUT THE DATA...</button>
   <br />
-  <hr />
   <br />
+  <hr>
 
   <h5>Delete Player Record</h5>
   <ion-item>
