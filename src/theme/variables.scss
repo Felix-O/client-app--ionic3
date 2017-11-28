@@ -87,7 +87,9 @@ $colors: (
 @import "roboto";
 @import "noto-sans";
 
-hr{
-  float: right;
-  clear: both;
+hr {
+  position: relative;
+  display: inline;
+  float: left;
+  width: 100%;
 }
