@@ -11,6 +11,7 @@ import { ApiProvider } from '../../providers/api/api';
 export class HomePage {
 
   doubleBindedVariable = {} as DoubleBindedVariable;
+  item = {} as Item;
   getVariable = [];
 
   constructor( public api: ApiProvider,
@@ -43,7 +44,7 @@ export class HomePage {
     this.api.putRequest(body);
   }
 
-  deleteData(item: string){
+  deleteData(item: Item){
     let body = JSON.stringify({
       id: item._id
     });
