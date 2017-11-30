@@ -43,7 +43,7 @@ export class HomePage {
     this.api.putRequest(body);
   }
 
-  deleteData(item: Item){
+  deleteData(item: string){
     let body = JSON.stringify({
       id: item._id
     });
