@@ -14,10 +14,7 @@
   <ion-list *ngFor="let item of getVariable">
 <ion-item>
 
-  <!--{{getVariable["0"]?.player}} : {{getVariable["0"]?.main}} , {{getVariable["0"]?.rank}}-->
-
-  {{item.player}}: {{item.main}}, {{item.rank}} <!--{{item._id}}-->
-
+  {{item.player}}: {{item.main}}, {{item.rank}}
 
 <button icon-only item-end small clear style="background-color: white; color: #555;" (click)="deleteData(item)">
 <ion-icon name="trash" ></ion-icon>
