@@ -11,12 +11,12 @@
   <h5>Get Player Records</h5>
   <button ion-button (click)="getData()" block >Get the data...</button>
   <br />
-  <ion-list *ngFor="let item of getVariable">
+  <ion-list *ngFor="let doubleBindedVariable of getVariable">
 <ion-item>
 
-  {{item.player}}: {{item.main}}, {{item.rank}}
+  {{doubleBindedVariable.player}}: {{doubleBindedVariable.main}}, {{doubleBindedVariable.rank}}
 
-<button icon-only item-end small clear style="background-color: white; color: #555;" (click)="deleteData(item)">
+<button icon-only item-end small clear style="background-color: white; color: #555;" (click)="deleteData(doubleBindedVariable)">
 <ion-icon name="trash" ></ion-icon>
 </button>
  </ion-item>
@@ -45,7 +45,7 @@
   <!--h5>Edit Player Record</h5>
   <ion-item>
   <ion-label for="putDataId" floating>Id</ion-label>
-  <ion-input name="puttDataId" type="text" [(ngModel)]="doubleBindedVariable.id"></ion-input>
+  <ion-input name="puttDataId" type="text" [(ngModel)]="doubleBindedVariable._id"></ion-input>
   </ion-item>
   <ion-item>
   <ion-label for="putDataPlayer" floating>Player</ion-label>
@@ -67,7 +67,7 @@
   <h5>Delete Player Record</h5>
   <ion-item>
   <ion-label for="deleteData" floating>Id</ion-label>
-  <ion-input name="deleteData" type="text" [(ngModel)]="doubleBindedVariable.id"></ion-input>
+  <ion-input name="deleteData" type="text" [(ngModel)]="doubleBindedVariable.-id"></ion-input>
   </ion-item>
   <br />
   <button ion-button (click)="deleteData(doubleBindedVariable)" block >DELETE THE DATA...</button>

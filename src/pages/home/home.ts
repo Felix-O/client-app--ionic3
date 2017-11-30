@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { DoubleBindedVariable } from '../../models/doublebindedvariables';
-import { Item } from '../../models/items';
 import { ApiProvider } from '../../providers/api/api';
 
 @Component({
@@ -12,7 +11,6 @@ import { ApiProvider } from '../../providers/api/api';
 export class HomePage {
 
   doubleBindedVariable = {} as DoubleBindedVariable;
-  item = {} as Item;
   getVariable = [];
 
   constructor( public api: ApiProvider,
@@ -37,7 +35,7 @@ export class HomePage {
 
   putData(doubleBindedVariable: DoubleBindedVariable){
     let body = JSON.stringify({
-      id: doubleBindedVariable.id,
+      id: doubleBindedVariable._id,
       player : doubleBindedVariable.player,
       main : doubleBindedVariable.main,
       rank: doubleBindedVariable.rank
@@ -45,9 +43,9 @@ export class HomePage {
     this.api.putRequest(body);
   }
 
-  deleteData(item: Item){
+  deleteData(doubleBindedVariable: DoubleBindedVariable){
     let body = JSON.stringify({
-      id: item._id
+      id: doubleBindedVariable._id
     });
     this.api.deleteRequest(body);
       this.getData();
