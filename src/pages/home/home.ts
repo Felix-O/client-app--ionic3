@@ -43,11 +43,11 @@ export class HomePage {
     this.api.putRequest(body);
   }
 
-  deleteData(doubleBindedVariable: DoubleBindedVariable){
+  deleteData(item: Item){
     let body = JSON.stringify({
-      id: doubleBindedVariable.id
+      id: item._id
     });
-    this.api.deleteRequest(body);
+    this.api.deleteRequest(body).then(this.getData());
   }
 
 }

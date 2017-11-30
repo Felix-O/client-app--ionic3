@@ -6,18 +6,28 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding no-bounce overflow-scroll="false">
+<ion-content padding no-bounce overflow-scroll="false" >
 
   <h5>Get Player Records</h5>
   <button ion-button (click)="getData()" block >Get the data...</button>
   <br />
   <ion-list *ngFor="let item of getVariable">
-   <!--{{getVariable["0"]?.player}} : {{getVariable["0"]?.main}} , {{getVariable["0"]?.rank}}-->
-     {{item.player}}: {{item.main}}, {{item.rank}}
+<ion-item>
+
+  <!--{{getVariable["0"]?.player}} : {{getVariable["0"]?.main}} , {{getVariable["0"]?.rank}}-->
+
+  {{item.player}}: {{item.main}}, {{item.rank}} <!--{{item._id}}-->
+
+
+<button icon-only item-end small clear style="background-color: white; color: #555;" (click)="deleteData(item)">
+<ion-icon name="trash" ></ion-icon>
+</button>
+ </ion-item>
+
  </ion-list>
   <hr>
 
-  <!--h5>Add Player Record</h5>
+  <h5>Add Player Record</h5>
 	<ion-item>
 	<ion-label for="postDataPlayer" floating>Player</ion-label>
 	<ion-input name="postDataPlayer" type="text" [(ngModel)]="doubleBindedVariable.player"></ion-input>
@@ -33,9 +43,9 @@
   <br />
 	<button ion-button (click)="postData(doubleBindedVariable)" block >POST THE DATA...</button>
   <br />
-  <hr -->
+  <hr>
 
-  <h5>Edit Player Record</h5>
+  <!--h5>Edit Player Record</h5>
   <ion-item>
   <ion-label for="putDataId" floating>Id</ion-label>
   <ion-input name="puttDataId" type="text" [(ngModel)]="doubleBindedVariable.id"></ion-input>
@@ -64,6 +74,6 @@
   </ion-item>
   <br />
   <button ion-button (click)="deleteData(doubleBindedVariable)" block >DELETE THE DATA...</button>
-  <br />
+  <br /-->
 
 </ion-content>
