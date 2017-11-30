@@ -49,7 +49,8 @@ export class HomePage {
     let body = JSON.stringify({
       id: item._id
     });
-    this.api.deleteRequest(body).then(this.getData());
+    this.api.deleteRequest(body);
+      this.getData();
   }
 
 }
