@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { DoubleBindedVariable } from '../../models/doublebindedvariables';
+import { Item } from '../../models/items';
 import { ApiProvider } from '../../providers/api/api';
 
 @Component({
