@@ -1,3 +1,3 @@
 export interface Item {
-  id: string;
+  _id: string;
 }
