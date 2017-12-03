@@ -9,10 +9,15 @@
 <ion-content padding no-bounce overflow-scroll="false" >
 
   <h5>Get Player Records</h5>
+	<ion-item>
+	<ion-label for="getDataPlayer" floating>Player</ion-label>
+	<ion-input name="getDataPlayer" type="text" [(ngModel)]="playerModel"></ion-input>
+	</ion-item>
+  <br />
   <button ion-button (click)="getData()" block >Get the data...</button>
   <br />
   <ion-list *ngFor="let doubleBindedVariable of getVariable">
-
+<ion-item-group>
 <ion-item>
   {{doubleBindedVariable.player}}: {{doubleBindedVariable.main}}, {{doubleBindedVariable.rank}}
   <button icon-only item-end small clear style="background-color: white; color: #555;" (click)="editData(doubleBindedVariable)">
@@ -22,8 +27,9 @@
   <ion-icon name="remove" ></ion-icon>
   </button>
 </ion-item >
+</ion-item-group>
 
-<ion-list *ngIf="edit && editId == doubleBindedVariable._id">
+<ion-item-group *ngIf="edit && editId == doubleBindedVariable._id">
    <ion-item>
    <ion-label for="putDataPlayer" floating>Player</ion-label>
    <ion-input name="putDataPlayer" type="text" [(ngModel)]="doubleBindedVariable.player"></ion-input>
@@ -46,10 +52,10 @@
    </button>
    <br />
   </ion-item>
-  </ion-list>
+  </ion-item-group>
 
 
-  <ion-list *ngIf="remove && editId == doubleBindedVariable._id">
+  <ion-item-group *ngIf="remove && editId == doubleBindedVariable._id">
     <ion-item>
       <button icon-only item-end small clear style="background-color: white; color: #555;" (click)="deleteData(doubleBindedVariable)">
         <ion-icon name="trash" ></ion-icon>
@@ -58,13 +64,17 @@
         <ion-icon name="close" ></ion-icon>
       </button>
     </ion-item>
-  </ion-list>
+  </ion-item-group>
 
  </ion-list>
   <hr>
 
   <h5>Add Player Record</h5>
-	<ion-item>
+
+  <ion-item>
+    <ion-label *ngIf="databasePostResponse">
+      {{databasePostResponse}}
+    </ion-label>
 	<ion-label for="postDataPlayer" floating>Player</ion-label>
 	<ion-input name="postDataPlayer" type="text" [(ngModel)]="doubleBindedVariable.player"></ion-input>
 	</ion-item>

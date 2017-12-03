@@ -24,12 +24,9 @@ export class ApiProvider {
       .map(res => res.json());
   }
 
-  async postRequest(body: string){
-    await this.http.post(this.url + 'postData' , body, this.setHeaders())
-      .map(res => res.json())
-      .subscribe(data => {
-        //console.log(data);
-      });
+  postRequest(body: string){
+    return this.http.post(this.url + 'postData' , body, this.setHeaders())
+      .map(res => res.json());
   }
 
   async putRequest(body: string){

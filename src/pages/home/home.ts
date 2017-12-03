@@ -14,7 +14,10 @@ export class HomePage {
   getVariable = [];
   public edit: boolean = false;
   public remove: boolean = false;
+  public post: boolean = false;
   editId: any = null;
+  playerModel: any = null;
+  databasePostResponse: any = null;
 
   constructor( public api: ApiProvider,
     public navCtrl: NavController) {
@@ -23,17 +26,26 @@ export class HomePage {
   getData(){
     this.api.getRequest().subscribe(data => {
       this.getVariable = data;
-      console.log(this.getVariable);
+      //console.log(this.getVariable);
     });
   }
 
-  postData(doubleBindedVariable: DoubleBindedVariable){
+  async postData(doubleBindedVariable: DoubleBindedVariable){
     let body = JSON.stringify({
       player : doubleBindedVariable.player,
       main : doubleBindedVariable.main,
       rank: doubleBindedVariable.rank
     });
-    this.api.postRequest(body);
+
+    await this.api.postRequest(body).subscribe(data => {
+      this.databasePostResponse = data;
+    });
+
+    doubleBindedVariable._id = null;
+    doubleBindedVariable.player = null;
+    doubleBindedVariable.main = null;
+    doubleBindedVariable.rank = null;
+
   }
 
   putData(doubleBindedVariable: DoubleBindedVariable){
@@ -44,8 +56,9 @@ export class HomePage {
       rank: doubleBindedVariable.rank
     });
     this.api.putRequest(body);
-
     this.editData(doubleBindedVariable);
+    this.close();
+    this.getData();
   }
 
   deleteData(doubleBindedVariable: DoubleBindedVariable){
@@ -78,12 +91,16 @@ export class HomePage {
     }
 
     this.remove = true;
+  }
 
+  postPostData(){
+      this.post = !this.post;
   }
 
   close(){
     this.edit = false;
     this.remove = false;
+    this.post = false;
   }
 
 }
