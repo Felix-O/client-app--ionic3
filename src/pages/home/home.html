@@ -12,14 +12,53 @@
   <button ion-button (click)="getData()" block >Get the data...</button>
   <br />
   <ion-list *ngFor="let doubleBindedVariable of getVariable">
+
 <ion-item>
-
   {{doubleBindedVariable.player}}: {{doubleBindedVariable.main}}, {{doubleBindedVariable.rank}}
+  <button icon-only item-end small clear style="background-color: white; color: #555;" (click)="editData(doubleBindedVariable)">
+    <ion-icon name="person" ></ion-icon>
+  </button>
+  <button icon-only item-end small clear style="background-color: white; color: #555;" (click)="removeData(doubleBindedVariable)">
+  <ion-icon name="remove" ></ion-icon>
+  </button>
+</ion-item >
 
-<button icon-only item-end small clear style="background-color: white; color: #555;" (click)="deleteData(doubleBindedVariable)">
-<ion-icon name="trash" ></ion-icon>
-</button>
- </ion-item>
+<ion-list *ngIf="edit && editId == doubleBindedVariable._id">
+   <ion-item>
+   <ion-label for="putDataPlayer" floating>Player</ion-label>
+   <ion-input name="putDataPlayer" type="text" [(ngModel)]="doubleBindedVariable.player"></ion-input>
+   </ion-item>
+   <ion-item>
+   <ion-label for="putDataMain" floating>Main</ion-label>
+   <ion-input name="putDataMain" type="text" [(ngModel)]="doubleBindedVariable.main"></ion-input>
+   </ion-item>
+   <ion-item>
+   <ion-label for="putDataRank" floating>Rank</ion-label>
+   <ion-input name="putDataRank" type="text" [(ngModel)]="doubleBindedVariable.rank"></ion-input>
+   </ion-item>
+   <br />
+   <ion-item>
+   <button icon-only item-end small clear style="background-color: white; color: #555;" (click)="putData(doubleBindedVariable)">
+     <ion-icon name="checkmark" ></ion-icon>
+   </button>
+   <button icon-only item-end small clear style="background-color: white; color: #555;" (click)="editData(doubleBindedVariable)">
+     <ion-icon name="close" ></ion-icon>
+   </button>
+   <br />
+  </ion-item>
+  </ion-list>
+
+
+  <ion-list *ngIf="remove && editId == doubleBindedVariable._id">
+    <ion-item>
+      <button icon-only item-end small clear style="background-color: white; color: #555;" (click)="deleteData(doubleBindedVariable)">
+        <ion-icon name="trash" ></ion-icon>
+      </button>
+      <button icon-only item-end small clear style="background-color: white; color: #555;" (click)="removeData(doubleBindedVariable)">
+        <ion-icon name="close" ></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
 
  </ion-list>
   <hr>

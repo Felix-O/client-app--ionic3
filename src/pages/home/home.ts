@@ -12,6 +12,9 @@ export class HomePage {
 
   doubleBindedVariable = {} as DoubleBindedVariable;
   getVariable = [];
+  public edit: boolean = false;
+  public remove: boolean = false;
+  editId: any = null;
 
   constructor( public api: ApiProvider,
     public navCtrl: NavController) {
@@ -41,6 +44,8 @@ export class HomePage {
       rank: doubleBindedVariable.rank
     });
     this.api.putRequest(body);
+
+    this.editData(doubleBindedVariable);
   }
 
   deleteData(doubleBindedVariable: DoubleBindedVariable){
@@ -48,7 +53,20 @@ export class HomePage {
       id: doubleBindedVariable._id
     });
     this.api.deleteRequest(body);
-      this.getData();
+    this.getData();
+  }
+
+  editData(doubleBindedVariable: DoubleBindedVariable){
+
+    this.editId = doubleBindedVariable._id;
+
+    this.edit = !this.edit;
+  }
+
+  removeData(doubleBindedVariable: DoubleBindedVariable){
+    this.editId = doubleBindedVariable._id;
+
+    this.remove = !this.remove;
   }
 
 }
