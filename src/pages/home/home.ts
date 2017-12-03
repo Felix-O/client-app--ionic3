@@ -60,13 +60,30 @@ export class HomePage {
 
     this.editId = doubleBindedVariable._id;
 
-    this.edit = !this.edit;
+    if(this.remove = true)
+    {
+      this.remove = !this.remove;
+    }
+
+    this.edit = true;
+
   }
 
   removeData(doubleBindedVariable: DoubleBindedVariable){
     this.editId = doubleBindedVariable._id;
 
-    this.remove = !this.remove;
+    if(this.edit = true)
+    {
+      this.edit = !this.edit;
+    }
+
+    this.remove = true;
+
+  }
+
+  close(){
+    this.edit = false;
+    this.remove = false;
   }
 
 }
